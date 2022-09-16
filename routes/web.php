@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'guest:web', 'controller' => \App\Http\Controllers\Client\AuthController::class], function () {
+    Route::get('/login', 'loginView')->name('auth.login');
+    Route::post('/login-action', 'logIn')->name('auth.login-action');
 });
+
+//Route::group(['middleware' => 'auth:web', 'controller' => ]);
