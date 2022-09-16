@@ -25,7 +25,7 @@ class LoginFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'login' => ['required', 'string', 'max:50', 'exists:users'],
+            'login' => ['required', 'string', 'email:filter', 'max:50', 'exists:users'],
             'password' => ['required', 'string', Password::min('6')
                 ->numbers()
                 ->letters()

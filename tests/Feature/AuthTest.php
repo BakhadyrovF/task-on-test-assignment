@@ -27,12 +27,12 @@ class AuthTest extends TestCase
     {
 
         User::factory()->create([
-            'login' => 'bakhadyrovf',
+            'login' => 'bakhadyrovf@gmail.com',
             'password' => bcrypt(config('credentials.admin-password'))
         ]);
 
         $data = [
-            'login' => 'bakhadyrovf',
+            'login' => 'bakhadyrovf@gmail.com',
             'password' => config('credentials.admin-password')
         ];
 
@@ -44,7 +44,7 @@ class AuthTest extends TestCase
     public function testInvalidLoginCredentials()
     {
         User::factory()->create([
-            'login' => 'bakhadyrovf',
+            'login' => 'bakhadyrovf@gmail.com',
             'password' => bcrypt(config('credentials.admin-password'))
         ]);
 
@@ -58,7 +58,7 @@ class AuthTest extends TestCase
             ->assertSessionHasErrors('login');
 
         $invalidPasswordResponse = $this->post(route('auth.login-action'), [
-            'login' => 'bakhadyrovf',
+            'login' => 'bakhadyrovf@gmail.com',
             'password' => config('credentials.admin-password') . 'test'
         ]);
 

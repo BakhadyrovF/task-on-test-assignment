@@ -14,10 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/test', function () {
-    return number_format(98832500 / 100, 2, ',', ' ');
-});
+//Route::get('/products', )

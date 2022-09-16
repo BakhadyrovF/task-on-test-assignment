@@ -12,6 +12,11 @@
                     <i class="login__icon fas fa-user"></i>
                     <input type="text" name="login" class="login__input" placeholder="Login">
                 </div>
+                <div>
+                    @error('login')
+                    <p>{{$message}}</p>
+                    @enderror
+                </div>
                 <div class="login__field">
                     <i class="login__icon fas fa-lock"></i>
                     <input type="password" name="password" class="login__input" placeholder="Password">
