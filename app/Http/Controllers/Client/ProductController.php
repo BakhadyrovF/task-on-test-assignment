@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\ProductStoreFormRequest;
 use App\Models\Product;
+use App\Models\Warehouse;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
@@ -32,7 +33,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $warehouses = Warehouse::orderByDesc('id')->get();
+
+        return view('products.create', compact('warehouses'));
     }
 
     /**
@@ -44,6 +47,7 @@ class ProductController extends Controller
     public function store(ProductStoreFormRequest $request)
     {
         $product = Product::create($request->validated());
+        $product->warehouses()->sync($request->validated('warehouses'));
 
         return redirect()->route('products.edit', $product);
     }
@@ -56,7 +60,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        $product->load('warehouses:id');
+        $warehouses = Warehouse::orderByDesc('id')->get();
+
+        return view('products.edit', compact('product', 'warehouses'));
     }
 
     /**
@@ -69,6 +76,7 @@ class ProductController extends Controller
     public function update(ProductStoreFormRequest $request, Product $product)
     {
         $product->update($request->validated());
+        $product->warehouses()->sync($request->validated('warehouses'));
 
         return redirect()->route('products.edit', $product);
     }

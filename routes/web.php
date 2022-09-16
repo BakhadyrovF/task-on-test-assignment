@@ -19,6 +19,7 @@ Route::group(['middleware' => 'guest:web', 'controller' => \App\Http\Controllers
 });
 
 Route::group(['middleware' => 'auth:web'], function () {
+    Route::post('/logout', [\App\Http\Controllers\Client\AuthController::class, 'logOut'])->name('auth.logout');
     Route::resource('warehouses', \App\Http\Controllers\WarehouseController::class)->except('edit', 'update', 'show');
     Route::resource('products', \App\Http\Controllers\Client\ProductController::class)->except('show');
 });

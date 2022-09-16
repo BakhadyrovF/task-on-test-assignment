@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\LoginFormRequest;
 use App\Models\User;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,7 +26,9 @@ class AuthController extends Controller
 
         auth('web')->login($user);
 
-        return 'success';
+        $warehouses = Warehouse::orderByDesc('id')->get();
+
+        return redirect()->route('warehouses.index', compact('warehouses'));
     }
 
     public function logOut()

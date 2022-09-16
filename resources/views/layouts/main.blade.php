@@ -18,6 +18,12 @@
                 </ul>
             </div>
         </div>
+        <div style="margin-right: 15px">
+            <form action="{{route('auth.logout')}}" method="POST">
+                @csrf
+                <button>Выйти</button>
+            </form>
+        </div>
     </nav>
         <div class="container">
             @yield('content')

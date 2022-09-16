@@ -26,7 +26,20 @@ class ProductStoreFormRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:150'],
             'description' => ['nullable', 'string', 'max:1500'],
-            'manufacture_date' => ['required', 'date', 'date_format:Y-m-d']
+            'manufacture_date' => ['required', 'date', 'date_format:Y-m-d'],
+            'warehouses' => ['nullable', 'array'],
+            'warehouses.*.id' => ['exists:warehouses'],
+            'warehouses.*.price' => ['numeric'],
+            'warehouses.*.amount' => ['integer']
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'warehouses' => collect($this->input('warehouses'))->filter(function ($item) {
+                return !is_null($item['price']) || !is_null($item['amount']);
+            })->toArray()
+        ]);
     }
 }

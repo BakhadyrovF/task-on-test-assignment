@@ -24,9 +24,13 @@
                     <td>{{$product->title}}</td>
                     <td>{{$product->description ?? 'Нет описания.'}}</td>
                     <td>
-                        @foreach($product->warehouses as $warehouse)
-                            <p>{{$warehouse->title}} - {{$warehouse->pivot->price}} р.</p>
-                        @endforeach
+                        @if($product->warehouses->isNotEmpty())
+                            @foreach($product->warehouses as $warehouse)
+                                <p>{{$warehouse->title}} - {{$warehouse->pivot->price}} р.</p>
+                            @endforeach
+                        @else
+                            <p>Нет в наличии.</p>
+                        @endif
                     </td>
                     <td>
                         <div style="display: flex">
