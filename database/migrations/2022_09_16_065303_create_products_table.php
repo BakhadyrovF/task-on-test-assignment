@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 150);
             $table->text('description')->nullable();
-            $table->timestamp('created_at');
+            $table->date('manufacture_date');
+            $table->timestamps();
         });
     }
 

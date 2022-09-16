@@ -16,6 +16,6 @@ class ProductWarehouse extends Pivot
 
     public function price(): Attribute
     {
-        return Attribute::make(fn($attribute) => $attribute / 100, fn($attribute) => $attribute * 100);
+        return Attribute::make(fn($attribute) => str_replace(',00', '', number_format($attribute / 100, 2, ',', ' ')), fn($attribute) => $attribute * 100);
     }
 }

@@ -18,4 +18,7 @@ Route::group(['middleware' => 'guest:web', 'controller' => \App\Http\Controllers
     Route::post('/login-action', 'logIn')->name('auth.login-action');
 });
 
-//Route::group(['middleware' => 'auth:web', 'controller' => ]);
+Route::group(['middleware' => 'auth:web'], function () {
+    Route::resource('warehouses', \App\Http\Controllers\WarehouseController::class)->except('edit', 'update', 'show');
+    Route::resource('products', \App\Http\Controllers\Client\ProductController::class)->except('show');
+});

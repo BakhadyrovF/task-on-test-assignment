@@ -17,7 +17,7 @@ class WarehouseFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title(),
+            'title' => $this->faker->text(20),
             'code' => $this->faker->unique()->numberBetween()
         ];
     }
