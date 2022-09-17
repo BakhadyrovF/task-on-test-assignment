@@ -10,7 +10,7 @@
                 @csrf
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="text" name="login" class="login__input" placeholder="Login">
+                    <input type="text" name="login" value="{{old('login')}}" class="login__input" placeholder="Login">
                 </div>
                 <div>
                     @error('login')

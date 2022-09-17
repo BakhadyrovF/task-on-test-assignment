@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', fn() => redirect()->route('warehouses.index'));
 
 Route::group(['middleware' => 'guest:web', 'controller' => \App\Http\Controllers\Client\AuthController::class], function () {
     Route::get('/login', 'loginView')->name('auth.login');

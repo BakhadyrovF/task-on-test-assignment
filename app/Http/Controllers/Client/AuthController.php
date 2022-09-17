@@ -21,7 +21,9 @@ class AuthController extends Controller
         $user = User::whereLogin($request->validated('login'))->first();
 
         if (!Hash::check($request->validated('password'), $user->password)) {
-            return redirect()->route('auth.login')->withErrors(['password' => __('auth.invalid-password')]);
+            return redirect()->route('auth.login')->withErrors(['password' => __('Password is invalid.')])->withInput([
+                'login' => $request->validated('login')
+            ]);
         }
 
         auth('web')->login($user);
