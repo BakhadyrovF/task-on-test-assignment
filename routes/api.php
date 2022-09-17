@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/products', )
+Route::get('/products', [\App\Http\Controllers\Api\ProductController::class, '__invoke']);
