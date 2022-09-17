@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\WarehouseCreateFormRequest;
 use App\Models\Warehouse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use function App\Http\Controllers\redirect;
+use function App\Http\Controllers\view;
 
 class WarehouseController extends Controller
 {
@@ -33,8 +37,8 @@ class WarehouseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param WarehouseCreateFormRequest $request
+     * @return RedirectResponse
      */
     public function store(WarehouseCreateFormRequest $request)
     {
