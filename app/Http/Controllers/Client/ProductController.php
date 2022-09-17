@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Filters\ProductFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\ProductStoreFormRequest;
 use App\Models\Product;
@@ -17,9 +18,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request, ProductFilter $filter)
     {
-        $products = Product::with('warehouses:id,title')
+        $request->whenFilled('search', function ($search) use ($filter) {
+            $filter->search($search);
+        });
+
+        $request->whenFilled('from', function ($from) use ($filter, $request) {
+            $filter->dateRange($from, $request->has('to') ? $request->query('to') : now());
+        });
+
+
+        $products = $filter->getBuilder()->with('warehouses:id,title')
             ->orderByDesc('created_at')
             ->get();
 

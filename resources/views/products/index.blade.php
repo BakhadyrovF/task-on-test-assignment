@@ -2,8 +2,24 @@
 @section('title', 'Продукты')
 
 @section('content')
-    <div style="margin-top: 50px">
-        <a href="{{route('products.create')}}" class="btn btn-primary">Новый продукт</a>
+
+    <div style="margin-top: 50px;">
+        <form action="{{route('products.index')}}" method="GET">
+        <div style="display: flex">
+            <a href="{{route('products.create')}}" class="btn btn-primary">Новый продукт</a>
+            <input type="text" class="form-control" name="search" value="{{request()->query('search')}}" style="width: 20%; margin-left: 15px; margin-right: 10px" placeholder="Поиск по наименованию">
+        </div>
+            <div class="mb-3 mt-3">
+                <h3>Фильтр по дате (От и До)</h3>
+                <div style="display: flex">
+                <input type="date" name="from" id="from" value="{{request()->query('from')}}" class="form-control" style="width: 20%; margin-right: 10px">
+
+                <input type="date" name="to" id="to" value="{{request()->query('to')}}" class="form-control" style="width: 20%; margin-right: 10px">
+                <button type="submit" class="btn btn-success">Отфильтровать</button>
+                <a href="{{route('products.index')}}" class="btn btn-warning" style="margin-left: 15px;">Сбросить</a>
+                </div>
+            </div>
+        </form>
     </div>
     <div style="margin-top: 15px">
         <h1>Продукты</h1>
