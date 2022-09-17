@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\WarehouseCreateFormRequest;
 use App\Models\Warehouse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use function App\Http\Controllers\redirect;
-use function App\Http\Controllers\view;
 
 class WarehouseController extends Controller
 {
