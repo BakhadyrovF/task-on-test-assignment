@@ -7,7 +7,8 @@ cp .env.example .env
 ```
 bash build-app.sh
 ```
-*Note that this script is for the first time only*.
+(*Note that this script is for the first time only*.)   
+Now you can access app in http://localhost:8000.
 
 
 # Tests
