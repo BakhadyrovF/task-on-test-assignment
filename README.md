@@ -3,11 +3,11 @@
 ```
 cp .env.example .env
 ```
-2. Run a shell script to avoid manually entering commands.
+2. Run a shell script to avoid manually entering commands.   
+   (*Note that this script is for the first time only*)
 ```
 bash build-app.sh
 ```
-And that is all!
 
 # Tests
 ```
