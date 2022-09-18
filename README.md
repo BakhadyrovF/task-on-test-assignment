@@ -1,4 +1,9 @@
 # Installation
+
+### Prerequisites:
+ - [Docker Engine](https://docs.docker.com/engine)
+ - [Docker Compose](https://docs.docker.com/compose)
+
 1. Copy contents of .env.example to .env file.
 ```
 cp .env.example .env
@@ -7,7 +12,7 @@ cp .env.example .env
 ```
 bash build-app.sh
 ```
-(*Note that this script is for the first time only*.)   
+(*Note that this script is for the first time only*)   
 Now you can access app in http://localhost:8000.
 
 
