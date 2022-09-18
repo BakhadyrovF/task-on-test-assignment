@@ -31,9 +31,6 @@
             </div>
             <div>
                 <h3>Склады</h3>
-                @if($errors->isNotEmpty())
-                    <p class="alert alert-danger">{{$errors->first('warehouses')}}</p>
-                @endif
                 <table class="table">
                     <thead>
                     <tr>

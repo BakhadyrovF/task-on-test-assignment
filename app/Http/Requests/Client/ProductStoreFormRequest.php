@@ -38,7 +38,7 @@ class ProductStoreFormRequest extends FormRequest
     {
         $this->merge([
             'warehouses' => collect($this->input('warehouses'))->filter(function ($item) {
-                return !is_null($item['price']) || !is_null($item['amount']);
+                return !is_null($item['price']) && !is_null($item['amount']);
             })->toArray()
         ]);
     }
