@@ -15,6 +15,9 @@ bash build-app.sh
 (*Note that this script is for the first time only*)   
 Now you can access app in http://localhost:8000.
 
+**Default credentials**:
+ - *admin@gmail.com*
+ - *password123*
 
 # Tests
 ```
