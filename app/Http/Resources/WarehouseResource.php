@@ -17,7 +17,7 @@ class WarehouseResource extends JsonResource
         return [
             'code' => $this->code,
             'title' => $this->title,
-            'price' => $this->pivot->price,
+            'price' => $this->getOriginal('pivot_price'),
         ];
     }
 }
